@@ -12,7 +12,7 @@ console.log(mapFunc(arr));
 
 //slice => slice adalah method array untuk memotong isi array berdasarkan index dari array tersebut, contohnya:
 const sliceFunc = (arr) => {
-   return arr?.slice(0, 2);
+   return arr?.slice(1, 2);
 };
 console.log(sliceFunc(arr));
 
@@ -61,7 +61,7 @@ const obj = {
 const forInObj = (obj) => {
    let results = "";
    for (const key in obj) {
-      results += obj[key] + " ";
+      results += obj[key] + ", ";
    }
    return results;
 };

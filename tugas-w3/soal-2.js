@@ -17,14 +17,14 @@ const name = [
    "Penelope",
 ];
 
-const searchName = (input, index, callback) => {
+const searchName = (keywords, limit, callback) => {
    const results = name?.filter((item) =>
-      item.toLowerCase().includes(input.toLowerCase())
+      item?.toLowerCase().includes(keywords.toLowerCase())
    );
    if (results?.length < 1) {
       return "Nama tidak ditemukan";
    }
-   return callback(results, index);
+   return callback(results, limit);
 };
-const sliceName = (value, index) => value?.slice(0, index);
-console.log(searchName("an", 4, sliceName));
+const sliceName = (value, limit) => value?.slice(0, limit);
+console.log(searchName("an", 3, sliceName));
