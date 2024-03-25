@@ -34,9 +34,9 @@ cekBulan(month)
       console.log(err?.message);
    });
 
-const getMovies = (key) => {
+const getMovies = (keywords) => {
    return new Promise((resolve, reject) => {
-      fetch(`https://api.jikan.moe/v4/anime?q=${key}`)
+      fetch(`https://www.omdbapi.com/?s=${keywords}&apikey=7df76970`)
          .then((response) => {
             if (!response?.ok) {
                throw new Error("Failed to fetch data");
@@ -49,12 +49,12 @@ const getMovies = (key) => {
    });
 };
 
-getMovies("naruto")
+getMovies("Harry Potter")
    .then((res) => {
-      res?.data?.map(({ title, url }) => {
+      res?.Search?.map(({ Title, Poster }) => {
          console.log(`
-         ${title}
-         ${url}
+         ${Title}
+         ${Poster}
          `);
       });
    })
