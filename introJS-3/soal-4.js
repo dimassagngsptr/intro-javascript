@@ -6,15 +6,16 @@ const getUsers = async (url, cb) => {
          error = true;
       }
       const data = await response.json();
-      data?.map(({ name }) => {
-         cb(name);
-      });
+      cb(null, data);
    } catch (err) {
-      error === true
-         ? console.log(new Error("Ada error saat fetching api..."))
-         : "";
+      error === true ? cb(new Error("Ada error saat fetching api..."), []) : "";
    }
 };
 const API = "https://jsonplaceholder.typicode.com/users";
-const callback = (value) => console.log(value);
+const callback = (err, value) =>
+   !err
+      ? value?.map(({ name }) => {
+           console.log(name);
+        })
+      : console.log(err?.message);
 getUsers(API, callback);

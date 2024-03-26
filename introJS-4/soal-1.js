@@ -1,5 +1,5 @@
 const detectPalindrome = (teks) => {
-   const word = teks.toLowerCase();
+   const word = teks?.toLowerCase();
    let isPalindrome = false;
    for (let i = 0; i < word.length; i++) {
       for (let j = word?.length; j >= 0; j--) {
@@ -11,7 +11,7 @@ const detectPalindrome = (teks) => {
       : `${teks} isnt palindrome`;
 };
 
-console.log(detectPalindrome("Malam"));
+console.log(detectPalindrome("Javascript"));
 
 const reverseWords = (teks) => {
    let results = "";

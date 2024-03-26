@@ -3,15 +3,17 @@ const cekHariKerja = (day) => {
       setTimeout(() => {
          const dataDay = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat"];
          let cek = dataDay?.find((item) => {
-            return item?.toLocaleLowerCase() === day?.toLocaleLowerCase();
+            return item;
          });
-         cek ? resolve(cek) : reject(new Error("Hari ini bukan hari kerja"));
+         cek
+            ? resolve(`${cek} adalah hari kerja`)
+            : reject(new Error(`${day} bukan hari kerja`));
       }, 3000);
    });
 };
 
 //menggunakan then catch
-cekHariKerja("minggu")
+cekHariKerja("Minggu")
    .then((res) => {
       console.log(res);
    })
@@ -26,11 +28,10 @@ penjelasan : then digunakan untuk menentukan tindakan yang akan diambil setelah 
             async await
 */
 
-
 //menggunakan try catch
 const checkDays = async () => {
    try {
-      const results = await cekHariKerja("selasa");
+      const results = await cekHariKerja("Selasa");
       console.log(results);
    } catch (error) {
       console.log(error?.message);
